@@ -2,11 +2,10 @@ import tkinter as tk
 from tkinter import filedialog
 from pytubefix import YouTube
 from pytubefix.cli import on_progress
-from sys import argv
 
 def download_video(url, save_path):
     try:
-        yt = YouTube(url, on_progress_callback=on_progress)
+        yt = YouTube(url, on_progress_callback=on_progress, use_po_token=True)
         print("Video Title: " + yt.title)
         
         ys = yt.streams.get_highest_resolution()
