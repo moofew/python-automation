@@ -3,8 +3,8 @@ from os.path import splitext, exists, join
 from shutil import move
 from time import sleep
 import logging
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer # type: ignore
+from watchdog.events import FileSystemEventHandler # type: ignore
 
 source_dir = "/Users/moofie111/Downloads" # your download folder
 dest_dir_audio = "" # preferred audio folder
@@ -12,15 +12,15 @@ dest_dir_video = "" # preferred video folder
 dest_dir_image = "/Users/moofie111/Downloads/test" # preferred image folder 
 dest_dir_documents = "" # preferred document folder
 
-# supported Audio extensions
+# supported audio extensions
 audio_extensions = [".m4a", ".flac", "mp3", ".wav", ".wma", ".aac"]
-# supported Video extensions
+# supported video extensions
 video_extensions = [".webm", ".mpg", ".mp2", ".mpeg", ".mpe", ".mpv", ".ogg",
                     ".mp4", ".mp4v", ".m4v", ".avi", ".wmv", ".mov", ".qt", ".flv", ".swf", ".avchd"]
 # supported image extensions
 image_extensions = [".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp", ".tiff", ".tif", ".psd", ".raw", ".arw", ".cr2", ".nrw",
                     ".k25", ".bmp", ".dib", ".heif", ".heic", ".ind", ".indd", ".indt", ".jp2", ".j2k", ".jpf", ".jpf", ".jpx", ".jpm", ".mj2", ".svg", ".svgz", ".ai", ".eps", ".ico"]
-# supported Document extensions
+# supported document extensions
 document_extensions = [".doc", ".docx", ".odt",
                        ".pdf", ".xls", ".xlsx", ".ppt", ".pptx"]
 
@@ -56,11 +56,7 @@ class MoverHandler(FileSystemEventHandler):
     def check_audio_files(self, entry, name):
         for audio_extension in audio_extensions:
             if name.endswith(audio_extension) or name.endswith(audio_extension.upper()):
-                if entry.stat().st_size < 10_000_000 or "SFX" in name:
-                    dest = dest_dir_sfx
-                else:
-                    dest = dest_dir_music
-                move_file(dest, entry, name)
+                move_file(dest_dir_audio, entry, name)
                 logging.info(f"Moved audio file: {name}")
 
     def check_video_files(self, entry, name):
