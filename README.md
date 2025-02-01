@@ -1,12 +1,12 @@
-# python-automation
+# Python Automation
 
-a collection of python automation scripts
+A collection of Python automation scripts.  
 
+**youtube_downloader.py**: YouTube video downloader tool  
+**pdf_merger.py**: PDF merger tool  
+**ebay_price_fetcher.py**: eBay price estimator tool  
+**file_manager.py**: Auto file organizer tool  
 
-youtube_downloader.py: youtube video downloader tool
+---
 
-pdf_merger.py: pdf merger tool
-
-ebay_price_fetcher.py: ebay price estimator tool
-
-file_manager.py: auto file organizer tool
+Project guided by https://www.youtube.com/@InternetMadeCoder
